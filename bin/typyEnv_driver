@@ -1,0 +1,49 @@
+#!/usr/bin/env python
+from typyEnv.Package import Package
+from typyEnv.Environment import Environment
+import argparse
+import os
+
+
+parser = argparse.ArgumentParser()
+parser.add_argument('package',type=str)
+parser.add_argument('--version',type=str,default=None)
+parser.add_argument('--json',type=str,default='')
+parser.add_argument('--dev',action='store_true')
+
+group = parser.add_mutually_exclusive_group(required=True)
+group.add_argument('--add',action='store_true')
+group.add_argument('--remove',action='store_true')
+
+args = parser.parse_args()
+
+
+if not args.json:
+  try:
+    json = os.environ['TYPYENV_JSON_PREFIX']
+  except KeyError:
+    print '.:: Error! TYPYENV_JSON_PREFIX needs to be set or'
+    print '.:: the --json parameter needs to be passed to typyenv.'
+    print 'Exiting...'
+    exit(1)
+else:
+  json = args.json
+
+pkg = Package(os.path.join(json,args.package)+'.json')
+pkg.read(args.version)
+
+env = Environment()
+if args.add:
+  env.add_package(pkg,export_dev_paths=args.dev)
+elif args.remove:
+  env.remove_package(pkg)
+
+dev_str,variables_str,export_str = env.export(export_dev_paths=args.dev)
+
+if dev_str:
+  print '[[DEV]]'
+  print dev_str
+print '[[VARIABLES]]'
+print variables_str
+print '[[EXPORT]]'
+print export_str

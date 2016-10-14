@@ -1,0 +1,16 @@
+{
+  "info": {
+    "name": "Boost",
+    "description": "Boost C++ Libraries",
+    "pkg_prefix":"/home/martintb/tyware/boost"
+  },
+  "defaults": {
+    "version":"1.58.0",
+    "std_paths":["lib","ldlib","include"],
+    "action":"prepend"
+  },
+  "versions": {
+    "1.58.0": { 
+    }
+  }
+}

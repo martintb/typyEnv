@@ -1,0 +1,16 @@
+{
+  "info": {
+    "name": "RapidXML",
+    "description": "RapidXML C++ Libraries",
+    "pkg_prefix":"/home/martintb/tyware/rapidxml"
+  },
+  "defaults": {
+    "version":"1.13",
+    "std_paths":["include"],
+    "action":"prepend"
+  },
+  "versions": {
+    "1.13": { 
+    }
+  }
+}

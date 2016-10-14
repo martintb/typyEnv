@@ -1,0 +1,13 @@
+{
+  "info": {
+    "name": "Gromacs",
+    "description": "Gronigen Machine for Chemical Simulations",
+    "pkg_prefix":"/home/martintb/tyware/gromacs"
+  },
+  "defaults": {
+    "version":"5.1",
+    "std_paths":["bin","ldlib"],
+    "action":"prepend"
+  },
+  "versions": { "5.1": {} }
+}

@@ -1,0 +1,13 @@
+{
+  "info": {
+    "name": "LAMMPS",
+    "description": "Large Scale Atomic/Molecular Massively Parallel Simulator!",
+    "pkg_prefix":"/home/martintb/tyware/lammps"
+  },
+  "defaults": {
+    "version":"150525",
+    "std_paths":["bin","ldlib","python"],
+    "action":"prepend"
+  },
+  "versions": { "150525": {} , "150525-edit": {} }
+}

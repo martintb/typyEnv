@@ -1,0 +1,16 @@
+{
+  "info": {
+    "name": "PyPrism",
+    "description": "PyPrism PRISM Solver",
+    "pkg_prefix":"/home/martintb/tyware/pyprism"
+  },
+  "defaults": {
+    "version":"1",
+    "std_paths":["python"],
+    "action":"prepend"
+  },
+  "versions": {
+    "1": { 
+    }
+  }
+}

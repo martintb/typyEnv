@@ -1,0 +1,13 @@
+{
+  "info": {
+    "name": "PACKMOL",
+    "description": "Tool for generating dense molecular packings",
+    "pkg_prefix":"/home/martintb/tyware/packmol"
+  },
+  "defaults": {
+    "version":"15.217",
+    "std_paths":["bin"],
+    "action":"prepend"
+  },
+  "versions": { "15.217": {} }
+}

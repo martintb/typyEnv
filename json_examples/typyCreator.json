@@ -1,0 +1,16 @@
+{
+  "info": {
+    "name": "typyCreator",
+    "description": "MD System Creator",
+    "pkg_prefix":"/home/martintb/tyware/typyCreator"
+  },
+  "defaults": {
+    "version":"1",
+    "std_paths":["python"],
+    "action":"prepend"
+  },
+  "versions": {
+    "1": { 
+    }
+  }
+}

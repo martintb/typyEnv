@@ -1,0 +1,13 @@
+{
+  "info": {
+    "name": "Armadillo",
+    "description": "Armadillo C++ Libraries for Mathematics",
+    "pkg_prefix":"/home/martintb/tyware/armadillo"
+  },
+  "defaults": {
+    "version":"5.200.2",
+    "std_paths":["lib","ldlib","include"],
+    "action":"prepend"
+  },
+  "versions": { "5.200.2": {} }
+}

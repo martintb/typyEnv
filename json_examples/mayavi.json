@@ -1,0 +1,17 @@
+{
+  "info": {
+    "name": "Mayavi2",
+    "description": "Mayavi Visualization Package",
+    "pkg_prefix":""
+  },
+  "defaults": {
+    "version":"4.4.2",
+    "std_paths":[],
+    "action":"prepend"
+  },
+  "versions": {
+    "4.4.2": { 
+      "path_mods":[{ "name":"ETS_TOOLKIT", "action":"prepend", "value":"qt4" }]
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "info": {
+    "name": "VMD Scripts",
+    "description": "Add BIN directory to path containing python scripts for VMD",
+    "pkg_prefix":"/home/martintb/tyware/typy/1/typy/vmd"
+  },
+  "defaults": {
+    "version":"1",
+    "std_paths":[],
+    "action":"prepend"
+  },
+  "versions": { "1": {
+      "path_mods":[{ "name":"PATH", "action":"prepend", "value":"/home/martintb/tyware/typy/1/typy/vmd/bin" }]
+    }
+  }
+}
