@@ -47,6 +47,14 @@ The code is written generally enough to handle any environment variable, but the
 ```
 Under the defaults header, the default version is specified as 150525, and typyEnv is told to look for 3 "standard paths": bin, lib, and pylib. If there were specific customization that were needs for specific pacakges, they would go under the "versions" header, which are left as empty {} for now as no customizations are needed. 
 
+Once the directory structure is created, code is compiled, and .json file is written, the package can be loaded with the following command:
+```
+typyEnv --add lammps --version 150525
+```
+The --version flag can be omitted and the default will be used. If the --dev flag is used, CPPFLAGS and LDFLAGS will be populated appropriately based on the presence of include and lib directories. 
+
+There is actually quite a bit more typyEnv is capable of and these features will be documented as needed. 
+
 ## Example Directory Structure ##
 ```
 software/
@@ -77,8 +85,8 @@ software/
 │   └── attic
 │       └── openmpi-1.10.3.tar.bz2
 ├── json
-│   ├── boost.json
-│   ├── lammps.json
-│   └── openmpi.json
+    ├── boost.json
+    ├── lammps.json
+    └── openmpi.json
 
 ```
