@@ -1,6 +1,6 @@
 # typyEnv #
 
-Lightweight environment management written primarily in python. The goal is to efficiently manage the following python environment variables and paths e.g.
+Lightweight environment management written primarily in python. The goal is to efficiently manage environment variables and paths e.g.
 
 * PATH
 * CPATH
@@ -10,7 +10,7 @@ Lightweight environment management written primarily in python. The goal is to e
 * LDFLAGS
 
 ## Installation ##
-In the install directory, modify the following two lines install.sh so that the variables correctly point to your software directory and the location of the typyEnv codebase.
+In the install directory, modify the following two lines in install.sh so that the variables correctly point to your software directory and the location of the typyEnv codebase.
 ``` 
 swString='export SW_BASE=/home/tbm/software'
 envString='export TYPYENV_BASE=$SW_BASE/typyEnv/0'
