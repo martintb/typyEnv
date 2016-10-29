@@ -32,7 +32,6 @@ class Path(object):
     if not (mod.__class__.__name__ == "PathMod"):
       print '.:: Error! Only PathMod objects should be passed to Path.add()'
       print 'Argument Type:',mod.__class__.__name__
-      print 'Exiting...'
       exit(1)
     if action is None:
       action = getattr(self,mod.action,None)
@@ -43,7 +42,6 @@ class Path(object):
       print '.:: Requested action not implemented!'
       print 'Requested Action:',action
       print 'PathMod Obj:',mod
-      print 'Exiting...'
       exit(1)
     action(mod.value)
 

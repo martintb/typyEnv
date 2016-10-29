@@ -49,9 +49,9 @@ Under the defaults header, the default version is specified as 150525, and typyE
 
 Once the directory structure is created, code is compiled, and .json file is written, the package can be loaded with the following command:
 ```
-typyEnv --add lammps --version 150525
+typyEnv --add lammps/150525
 ```
-The --version flag can be omitted and the default will be used. If the --dev flag is used, CPPFLAGS and LDFLAGS will be populated appropriately based on the presence of include and lib directories. 
+The version (/150525) can be omitted and the default will be used. If the --dev flag is used, CPPFLAGS and LDFLAGS will be populated appropriately based on the presence of include and lib directories. 
 
 There is actually quite a bit more typyEnv is capable of and these features will be documented as needed. 
 
@@ -84,7 +84,7 @@ software/
 │   │   └── src
 │   └── attic
 │       └── openmpi-1.10.3.tar.bz2
-├── json
+└── json
     ├── boost.json
     ├── lammps.json
     └── openmpi.json

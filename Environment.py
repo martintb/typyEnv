@@ -13,8 +13,7 @@ class Environment(object):
     if pkg.loaded:
       print '.:: Adding package {} version {} to {}'.format(pkg.name,pkg.version,pkg.modded_paths)
     else:
-      print '.:: Package not loaded! Need to call pkg.read()!'
-      print 'Exiting...'
+      print '.:: Error! Package not loaded! Need to call pkg.read()!'
       exit(1)
     for mod in pkg.path_mods:
       self.mod_path(mod)
@@ -37,8 +36,7 @@ class Environment(object):
     if pkg.loaded:
       print '.:: Removing package {} version {} from {}'.format(pkg.name,pkg.version,pkg.modded_paths)
     else:
-      print '.:: Package not loaded! Need to call pkg.read()!'
-      print 'Exiting...'
+      print '.:: Error! Package not loaded! Need to call pkg.read()!'
       exit(1)
     for mod in pkg.path_mods:
       if mod.name not in self.paths:

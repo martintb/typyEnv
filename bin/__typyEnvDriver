@@ -7,7 +7,6 @@ import os
 
 parser = argparse.ArgumentParser()
 parser.add_argument('packages',type=str,nargs="+")
-parser.add_argument('--version',type=str,default=None)
 parser.add_argument('--json',type=str,default='')
 parser.add_argument('--dev',action='store_true')
 
@@ -23,8 +22,7 @@ if not args.json:
     json = os.environ['TYPYENV_JSON_PREFIX']
   except KeyError:
     print '.:: Error! TYPYENV_JSON_PREFIX needs to be set or'
-    print '.:: the --json parameter needs to be passed to typyenv.'
-    print 'Exiting...'
+    print '.:: the --json parameter needs to be passed to typyEnv.'
     exit(1)
 else:
   json = args.json
@@ -34,9 +32,14 @@ depList = []
 depList.extend(args.packages)
 allDone=False
 while not allDone:
-  pkgName = depList.pop(0)
+  pkgSpec = depList.pop(0).split("/")
+  pkgName = pkgSpec[0]
+  try:
+    pkgVersion = pkgSpec[1]
+  except IndexError:
+    pkgVersion = None
   pkg = Package(os.path.join(json,pkgName)+'.json')
-  pkg.read(args.version)
+  pkg.read(pkgVersion)
   pkgList.append(pkg)
   depList.extend(pkg.dependencies)
   if not depList:
