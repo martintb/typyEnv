@@ -6,7 +6,7 @@ import os
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument('package',type=str)
+parser.add_argument('packages',type=str,nargs="+")
 parser.add_argument('--version',type=str,default=None)
 parser.add_argument('--json',type=str,default='')
 parser.add_argument('--dev',action='store_true')
@@ -29,14 +29,25 @@ if not args.json:
 else:
   json = args.json
 
-pkg = Package(os.path.join(json,args.package)+'.json')
-pkg.read(args.version)
+pkgList = []
+depList = []
+depList.extend(args.packages)
+allDone=False
+while not allDone:
+  pkgName = depList.pop(0)
+  pkg = Package(os.path.join(json,pkgName)+'.json')
+  pkg.read(args.version)
+  pkgList.append(pkg)
+  depList.extend(pkg.dependencies)
+  if not depList:
+    allDone=True
 
 env = Environment()
-if args.add:
-  env.add_package(pkg,export_dev_paths=args.dev)
-elif args.remove:
-  env.remove_package(pkg)
+for pkg in reversed(pkgList):
+  if args.add:
+    env.add_package(pkg,export_dev_paths=args.dev)
+  elif args.remove:
+    env.remove_package(pkg)
 
 dev_str,variables_str,export_str = env.export(export_dev_paths=args.dev)
 

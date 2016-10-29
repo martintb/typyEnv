@@ -18,6 +18,7 @@ class Package(object):
     self.version=None
     self.path_mods=[]
     self.name=None
+    self.dependencies=[]
   def __str__(self):
     if self.loaded:
       return '<Package name:{} version:{}, num_mods:{}, paths:{}>'.format(self.name,self.version,self.num_mods,self.modded_paths)
@@ -56,6 +57,9 @@ class Package(object):
       for k,v in vpkg.items():
         if k=='path_mods':
           self.path_mods.extend([PathMod(**pd) for pd in v])
+        elif k=='dependencies':
+          if k not in self.dependencies:
+            self.dependencies.extend(v)
         else:
           setattr(self,k,v)
     else:

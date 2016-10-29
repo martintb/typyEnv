@@ -1,5 +1,6 @@
 export TYPYENV_BIN=$TYPYENV_BASE/typyEnv/bin
 export TYPYENV_JSON_PREFIX=$SW_BASE/json
+export TYPYENV_LOADED_PKGS=''
 
 
 # TYPY needs to be added to the PYTHONPATH
@@ -52,7 +53,8 @@ typyEnv() {
       export_line_incoming=false
     elif [[ "$dev_line_incoming" == true ]];then
       # echo "$line"
-      eval_str="${line//[^0-9a-zA-z\/\_\-\.\=\;\' ]/}"
+      # listing the ' twice is on purpose for syntax highlighting reasons
+      eval_str="${line//[^0-9a-zA-z\/\_\-\.\=\;\'\' ]/}"
       eval "$(echo ${eval_str})"
       dev_line_incoming=false
     elif [[ "$line" == '[[EXPORT]]' ]];then
