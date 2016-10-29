@@ -21,20 +21,12 @@ else
 	export PATH=$TYPYENV_BIN:$PATH
 fi
 
-# When installing new software, it is often best to not load
-# any "extra" software that are direct dependencies of the 
-# software being compiled. This function runs any bash script
-# in a subshell without loading any user configuration. 
-typyCleanShell() {
-  env -i bash --rcfile /etc/profile $*
-}
-
 ############################
 ### BASH DRIVER FUNCTION ###
 ############################
 
 typyEnv() {
-  python_output_str=$(typyEnv_driver $*)
+  python_output_str=$(__typyEnvDriver $*)
 
   dev_line_incoming=false
   variables_line_incoming=false
