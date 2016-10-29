@@ -1,0 +1,16 @@
+{
+  "info": {
+    "name": "CMake",
+    "description": "Cross Platform Make",
+    "pkg_prefix":"/home/martintb/tyware/cmake"
+  },
+  "defaults": {
+    "version":"3.3.0",
+    "std_paths":["bin"],
+    "action":"prepend"
+  },
+  "versions": {
+    "3.3.0": { 
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "info": {
+    "name": "VMD",
+    "description": "Visual Molecular Dynamics Package",
+    "pkg_prefix":"/home/martintb/tyware/vmd"
+  },
+  "defaults": {
+    "version":"1.9.2",
+    "std_paths":["bin","lib"],
+    "action":"prepend"
+  },
+  "versions": { "1.9.2": {} }
+}

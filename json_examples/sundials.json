@@ -1,0 +1,16 @@
+{
+  "info": {
+    "name": "sundials",
+    "description": "Sundials Numerical Analysis Package",
+    "pkg_prefix":"/home/martintb/tyware/sundials"
+  },
+  "defaults": {
+    "version":"2.6.1",
+    "std_paths":["lib","ldlib","include"],
+    "action":"prepend"
+  },
+  "versions": {
+    "2.6.1": { 
+    }
+  }
+}

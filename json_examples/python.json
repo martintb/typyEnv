@@ -1,0 +1,20 @@
+{
+  "info": {
+    "name": "Python",
+    "description": "Python Scripting Language",
+    "pkg_prefix":"/home/martintb/tyware/python"
+  },
+  "defaults": {
+    "version":"2.7.10",
+    "std_paths":["bin","ldlib","lib","include"],
+    "action":"prepend"
+  },
+  "versions": {
+    "2.7.10": { 
+      "path_mods":[
+                   { "name":"QT_API", "action":"prepend", "value":"pyqt" },
+                   { "name":"CPATH", "action":"append", "value":"/home/martintb/tyware/python/2.7.10/include/python2.7" }
+                  ]
+    }
+  }
+}

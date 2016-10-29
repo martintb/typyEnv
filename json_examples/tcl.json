@@ -1,0 +1,13 @@
+{
+  "info": {
+    "name": "TCL-TK",
+    "description": "TCL and Tk Libraries",
+    "pkg_prefix":"/home/martintb/tyware/tcl-tk"
+  },
+  "defaults": {
+    "version":"8.6.4",
+    "std_paths":["bin","ldlib","lib","include"],
+    "action":"prepend"
+  },
+  "versions": { "8.6.4": {} }
+}

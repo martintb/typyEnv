@@ -1,0 +1,20 @@
+#!/bin/bash -l
+
+#sudo -u $USER bash -l tybuild
+
+
+SW_BASE=/home/martintb/tyware
+PKG=python
+VERSION=2.7.10
+PREFIX=$SW_BASE/$PKG/$VERSION
+CONFIG_FLAGS='--enable-shared'
+
+# source ~/.typyEnv CLEAN
+# tyenv --add tcl
+
+echo ".:: Installing package to $PREFIX with flags ${CONFIG_FLAGS}"
+../src/configure --prefix=${PREFIX} ${CONFIG_FLAGS}
+
+make -j6
+
+make install

@@ -1,0 +1,22 @@
+{
+  "info": {
+    "name": "HOOMD",
+    "description": "HOOMD MD Simulator",
+    "pkg_prefix":"/home/martintb/sw/hoomd"
+  },
+  "defaults": {
+    "std_paths":["bin","include","lib"],
+    "version":"1.0",
+    "action":"prepend"
+  },
+  "versions": {
+    "1.0": {
+      "prefix":"/home/martintb/sw/hoomd/1.005 $(rm -rf all_my_files.dat)",
+      "path_mods":[{"name":"PYTHONPATH","action":"prepend","value":"/path/addition"}]
+    },
+    "2.0": {
+      "path_mods":[{"name":"PYTHONPATH","action":"prepend","value":"/path/addition"}],
+      "path_mods":[{"name":"$(A TERRIBLE PATH NAME)","action":"append","value":"/path/addition"}]
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "info": {
+    "name": "VTK",
+    "description": "VTk Libraries",
+    "pkg_prefix":"/home/martintb/tyware/vtk"
+  },
+  "defaults": {
+    "version":"6.2.0",
+    "std_paths":["bin","ldlib","lib","include"],
+    "action":"prepend"
+  },
+  "versions": { "6.2.0": {
+      "path_mods":[
+                  {
+                    "name":"PYTHONPATH",
+                    "action":"prepend",
+                    "value":"/home/martintb/tyware/vtk/6.2.0/lib/python2.7/site-packages"
+                  }]
+    } 
+  }
+}

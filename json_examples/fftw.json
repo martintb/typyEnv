@@ -1,0 +1,16 @@
+{
+  "info": {
+    "name": "FFTW3",
+    "description": "FFTW3: Fastest Fourier Transform in the West",
+    "pkg_prefix":"/home/martintb/tyware/fftw3"
+  },
+  "defaults": {
+    "version":"3.3.4",
+    "std_paths":["bin","lib","ldlib","include"],
+    "action":"prepend"
+  },
+  "versions": {
+    "3.3.4": { 
+    }
+  }
+}
