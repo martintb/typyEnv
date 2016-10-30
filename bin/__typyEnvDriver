@@ -15,8 +15,25 @@ group = parser.add_mutually_exclusive_group(required=True)
 group.add_argument('--add',action='store_true')
 group.add_argument('--remove',action='store_true')
 group.add_argument('--reset',action='store_true')
+group.add_argument('--list',action='store_true')
 
 args = parser.parse_args()
+
+if args.list:
+  try:
+    loaded_pkgs = os.environ['TYPYENV_LOADED_PKGS']
+  except KeyError:
+    print '.:: Error! TYPYENV_LOADED_PKGS not set!'
+    exit(1)
+  print '{:15s} {:15s}'.format('PACKAGE','VERSION')
+  print '{:15s} {:15s}'.format('=======','=======')
+  if loaded_pkgs:
+    for pkg in loaded_pkgs.split(':'):
+      pkgSPec = pkg.split('/')
+      print '{:15s} {:15s}'.format(*(pkg.split('/')))
+  else:
+    print 'No loaded packages!'
+  exit(1)
 
 
 if not args.json:
