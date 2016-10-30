@@ -6,6 +6,14 @@ class Path(object):
       self.path_set = OrderedSet()
     else:
       self.path_set = OrderedSet(path_str.split(sep))
+
+    #remove empty values
+    for val in [' ','']:
+      try:
+        self.path_set.remove(val)
+      except KeyError:
+        pass
+        
     self.num = len(self.path_set)
     self.sep = sep
     self.name = name.replace(' ','_') #do a bit of sanitization on the path name

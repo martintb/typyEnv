@@ -3,8 +3,10 @@ import json
 import os
 
 class Package(object):
-  def __init__(self,fname):
-    self.fname = fname
+  def __init__(self,base_path,pkg_name):
+    self.base_path = base_path
+    self.pkg_name = pkg_name
+    self.fname = os.path.join(base_path,pkg_name)+'.json'
     self.std_paths = ['bin','include','lib']
     self.std_paths_dict = {
                             'bin':      {'dir':'bin'      ,'name':'PATH'},

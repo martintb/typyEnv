@@ -12,6 +12,6 @@ class PathMod(object):
         print '{}: {}',format(k,v)
       exit(1)
   def __str__(self):
-    return '<PathMod name:{} action:{}, value {}>'.format(self.name,self.action,self.value)
+    return '<PathMod name:{} action:{} value:{}>'.format(self.name,self.action,self.value)
   def __repr__(self):
     return self.__str__()

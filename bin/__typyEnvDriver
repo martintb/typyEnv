@@ -1,18 +1,20 @@
 #!/usr/bin/env python
 from typyEnv.Package import Package
 from typyEnv.Environment import Environment
+from typyEnv.PathMod import PathMod
 import argparse
 import os
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument('packages',type=str,nargs="+")
+parser.add_argument('packages',type=str,nargs="*")
 parser.add_argument('--json',type=str,default='')
 parser.add_argument('--dev',action='store_true')
 
 group = parser.add_mutually_exclusive_group(required=True)
 group.add_argument('--add',action='store_true')
 group.add_argument('--remove',action='store_true')
+group.add_argument('--reset',action='store_true')
 
 args = parser.parse_args()
 
@@ -27,9 +29,23 @@ if not args.json:
 else:
   json = args.json
 
-pkgList = []
 depList = []
-depList.extend(args.packages)
+if args.reset:
+  try:
+    loaded_pkgs = os.environ['TYPYENV_LOADED_PKGS']
+  except KeyError:
+    print '.:: Error! TYPYENV_LOADED_PKGS not set!'
+    exit(1)
+  if loaded_pkgs:
+    depList.extend(loaded_pkgs.split(':'))
+  else:
+    print '.:: No loaded packages!'
+    exit(1)
+  args.remove = True
+else:
+  depList.extend(args.packages)
+
+pkgList = []
 allDone=False
 while not allDone:
   pkgSpec = depList.pop(0).split("/")
@@ -38,7 +54,7 @@ while not allDone:
     pkgVersion = pkgSpec[1]
   except IndexError:
     pkgVersion = None
-  pkg = Package(os.path.join(json,pkgName)+'.json')
+  pkg = Package(json,pkgName)
   pkg.read(pkgVersion)
   pkgList.append(pkg)
   depList.extend(pkg.dependencies)
@@ -48,9 +64,14 @@ while not allDone:
 env = Environment()
 for pkg in reversed(pkgList):
   if args.add:
+    action = 'append'
     env.add_package(pkg,export_dev_paths=args.dev)
   elif args.remove:
+    action = 'remove'
     env.remove_package(pkg)
+  pkgName = pkg.pkg_name + '/' + pkg.version
+  mod = PathMod(name='TYPYENV_LOADED_PKGS',action=action,value=pkgName)
+  env.mod_path(mod)
 
 dev_str,variables_str,export_str = env.export(export_dev_paths=args.dev)
 
