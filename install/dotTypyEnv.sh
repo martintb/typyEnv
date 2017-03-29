@@ -2,6 +2,10 @@ export TYPYENV_BIN=$TYPYENV_BASE/typyEnv/bin
 export TYPYENV_JSON_PREFIX=$SW_BASE/json
 export TYPYENV_LOADED_PKGS=''
 
+if [[ -z "$TYPYENV_LOADED_PKGS" ]]; then
+  export TYPYENV_LOADED_PKGS=''
+fi
+
 
 # TYPY needs to be added to the PYTHONPATH
 # This allows the typy.typyenv module to import the 
