@@ -57,7 +57,7 @@ if args.reset:
     depList.extend(loaded_pkgs.split(':'))
   else:
     print '--> No loaded packages!'
-    exit(1)
+    exit(0)
   args.remove = True
 else:
   depList.extend(args.packages)
