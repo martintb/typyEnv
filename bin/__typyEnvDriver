@@ -23,7 +23,7 @@ if args.list:
   try:
     loaded_pkgs = os.environ['TYPYENV_LOADED_PKGS']
   except KeyError:
-    print '.:: Error! TYPYENV_LOADED_PKGS not set!'
+    print '==> Error! TYPYENV_LOADED_PKGS not set!'
     exit(1)
   print '{:15s} {:15s}'.format('PACKAGE','VERSION')
   print '{:15s} {:15s}'.format('=======','=======')
@@ -40,8 +40,8 @@ if not args.json:
   try:
     json = os.environ['TYPYENV_JSON_PREFIX']
   except KeyError:
-    print '.:: Error! TYPYENV_JSON_PREFIX needs to be set or'
-    print '.:: the --json parameter needs to be passed to typyEnv.'
+    print '==> Error! TYPYENV_JSON_PREFIX needs to be set or'
+    print '--> the --json parameter needs to be passed to typyEnv.'
     exit(1)
 else:
   json = args.json
@@ -51,12 +51,12 @@ if args.reset:
   try:
     loaded_pkgs = os.environ['TYPYENV_LOADED_PKGS']
   except KeyError:
-    print '.:: Error! TYPYENV_LOADED_PKGS not set!'
+    print '==> Error! TYPYENV_LOADED_PKGS not set!'
     exit(1)
   if loaded_pkgs:
     depList.extend(loaded_pkgs.split(':'))
   else:
-    print '.:: No loaded packages!'
+    print '--> No loaded packages!'
     exit(1)
   args.remove = True
 else:

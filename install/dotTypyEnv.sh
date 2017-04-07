@@ -77,7 +77,7 @@ typyEnv() {
 }
 
 if [[ ! "$1" == "CLEAN" ]] ; then
-  echo ".:: Nothing to load..."
+  echo "--> Nothing to load..."
   # typyEnv --add python
   # typyEnv --add vmd
   # typyEnv --add vmd_script
@@ -85,4 +85,6 @@ if [[ ! "$1" == "CLEAN" ]] ; then
   # typyEnv --add vtk
   # typyEnv --add tcl
   # typyEnv --add mayavi
+else
+  typyEnv --reset
 fi

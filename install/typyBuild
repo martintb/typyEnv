@@ -12,7 +12,7 @@ CONFIG_FLAGS='--enable-shared'
 # source ~/.typyEnv CLEAN
 # tyenv --add tcl
 
-echo ".:: Installing package to $PREFIX with flags ${CONFIG_FLAGS}"
+echo "--> Installing package to $PREFIX with flags ${CONFIG_FLAGS}"
 ../src/configure --prefix=${PREFIX} ${CONFIG_FLAGS}
 
 make -j6

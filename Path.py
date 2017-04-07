@@ -35,10 +35,10 @@ class Path(object):
     try:
       self.path_set.remove(path)
     except KeyError:
-      print '.:: Not Found! Skipping removal of {} from {}'.format(path,self.name)
+      print '--> Not Found! Skipping removal of {} from {}'.format(path,self.name)
   def modify(self, mod,action=None):
     if not (mod.__class__.__name__ == "PathMod"):
-      print '.:: Error! Only PathMod objects should be passed to Path.add()'
+      print '==> Error! Only PathMod objects should be passed to Path.add()'
       print 'Argument Type:',mod.__class__.__name__
       exit(1)
     if action is None:
@@ -47,7 +47,7 @@ class Path(object):
       action = getattr(self,action,None)
 
     if action is None:
-      print '.:: Requested action not implemented!'
+      print '--> Requested action not implemented!'
       print 'Requested Action:',action
       print 'PathMod Obj:',mod
       exit(1)
