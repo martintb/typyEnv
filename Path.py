@@ -1,4 +1,5 @@
-from OrderedSet import OrderedSet
+from __future__ import print_function
+from typyEnv.OrderedSet import OrderedSet
 
 class Path(object):
   def __init__(self,path_str,name,sep=':'):
@@ -35,11 +36,11 @@ class Path(object):
     try:
       self.path_set.remove(path)
     except KeyError:
-      print '--> Not Found! Skipping removal of {} from {}'.format(path,self.name)
+      print('--> Not Found! Skipping removal of {} from {}'.format(path,self.name))
   def modify(self, mod,action=None):
     if not (mod.__class__.__name__ == "PathMod"):
-      print '==> Error! Only PathMod objects should be passed to Path.add()'
-      print 'Argument Type:',mod.__class__.__name__
+      print('==> Error! Only PathMod objects should be passed to Path.add()')
+      print('Argument Type:',mod.__class__.__name__)
       exit(1)
     if action is None:
       action = getattr(self,mod.action,None)
@@ -47,9 +48,9 @@ class Path(object):
       action = getattr(self,action,None)
 
     if action is None:
-      print '--> Requested action not implemented!'
-      print 'Requested Action:',action
-      print 'PathMod Obj:',mod
+      print('--> Requested action not implemented!')
+      print('Requested Action:',action)
+      print('PathMod Obj:',mod)
       exit(1)
     action(mod.value)
 

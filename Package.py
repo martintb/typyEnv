@@ -1,3 +1,4 @@
+from __future__ import print_function
 from typyEnv.PathMod import PathMod
 import json
 import os
@@ -51,9 +52,9 @@ class Package(object):
       try:
         vpkg = pkg['versions'][self.version]
       except KeyError:
-        print '==> Error! Requested version not found in json for package!'
-        print 'Package:',self.fname
-        print 'Version:',self.version
+        print('==> Error! Requested version not found in json for package!')
+        print('Package:',self.fname)
+        print('Version:',self.version)
         exit(1)
 
       for k,v in vpkg.items():
@@ -65,8 +66,8 @@ class Package(object):
         else:
           setattr(self,k,v)
     else:
-      print '==> Error! No version specified!'
-      print '-->        or "prefix" in each "version" block'
+      print('==> Error! No version specified!')
+      print('-->        or "prefix" in each "version" block')
       exit(1)
     
     # Are we ready to make path mods?
@@ -75,8 +76,8 @@ class Package(object):
     elif hasattr(self,'pkg_prefix'):
       self.full_prefix = os.path.join(self.pkg_prefix,self.version)
     else:
-      print '==> Error! Package needs to specify "pkg_prefix" in "info" block'
-      print '-->        or "prefix" in each "version" block'
+      print('==> Error! Package needs to specify "pkg_prefix" in "info" block')
+      print('-->        or "prefix" in each "version" block')
       exit(1)
     
     # make std_paths
@@ -84,10 +85,10 @@ class Package(object):
       try:
         spd =self.std_paths_dict[path]
       except KeyError:
-        print '==> Error! Standard path information not specified. You asked for:'
-        print path
-        print '--> I have specifications for the following standard paths:'
-        print self.std_paths_dict.keys()
+        print('==> Error! Standard path information not specified. You asked for:')
+        print(path)
+        print('--> I have specifications for the following standard paths:')
+        print(self.std_paths_dict.keys())
         exit(1)
 
       value = os.path.join(self.full_prefix,spd['dir'])

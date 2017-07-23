@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+from __future__ import print_function
 from typyEnv.Package import Package
 from typyEnv.Environment import Environment
 from typyEnv.PathMod import PathMod
@@ -23,16 +24,16 @@ if args.list:
   try:
     loaded_pkgs = os.environ['TYPYENV_LOADED_PKGS']
   except KeyError:
-    print '==> Error! TYPYENV_LOADED_PKGS not set!'
+    print('==> Error! TYPYENV_LOADED_PKGS not set!')
     exit(1)
-  print '{:15s} {:15s}'.format('PACKAGE','VERSION')
-  print '{:15s} {:15s}'.format('=======','=======')
+  print('{:15s} {:15s}'.format('PACKAGE','VERSION'))
+  print('{:15s} {:15s}'.format('=======','======='))
   if loaded_pkgs:
     for pkg in loaded_pkgs.split(':'):
       pkgSPec = pkg.split('/')
-      print '{:15s} {:15s}'.format(*(pkg.split('/')))
+      print('{:15s} {:15s}'.format(*(pkg.split('/'))))
   else:
-    print 'No loaded packages!'
+    print('No loaded packages!')
   exit(1)
 
 
@@ -40,8 +41,8 @@ if not args.json:
   try:
     json = os.environ['TYPYENV_JSON_PREFIX']
   except KeyError:
-    print '==> Error! TYPYENV_JSON_PREFIX needs to be set or'
-    print '--> the --json parameter needs to be passed to typyEnv.'
+    print('==> Error! TYPYENV_JSON_PREFIX needs to be set or')
+    print('--> the --json parameter needs to be passed to typyEnv.')
     exit(1)
 else:
   json = args.json
@@ -51,12 +52,12 @@ if args.reset:
   try:
     loaded_pkgs = os.environ['TYPYENV_LOADED_PKGS']
   except KeyError:
-    print '==> Error! TYPYENV_LOADED_PKGS not set!'
+    print('==> Error! TYPYENV_LOADED_PKGS not set!')
     exit(1)
   if loaded_pkgs:
     depList.extend(loaded_pkgs.split(':'))
   else:
-    print '--> No loaded packages!'
+    print('--> No loaded packages!')
     exit(0)
   args.remove = True
 else:
@@ -93,9 +94,9 @@ for pkg in reversed(pkgList):
 dev_str,variables_str,export_str = env.export(export_dev_paths=args.dev)
 
 if dev_str:
-  print '[[DEV]]'
-  print dev_str
-print '[[VARIABLES]]'
-print variables_str
-print '[[EXPORT]]'
-print export_str
+  print('[[DEV]]')
+  print(dev_str)
+print('[[VARIABLES]]')
+print(variables_str)
+print('[[EXPORT]]')
+print(export_str)

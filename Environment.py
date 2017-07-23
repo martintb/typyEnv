@@ -1,3 +1,4 @@
+from __future__ import print_function
 import os
 from typyEnv.Path import Path
 from typyEnv.PathMod import PathMod
@@ -11,18 +12,18 @@ class Environment(object):
     # right now, this self.paths method doesn't handle adding to the same path twice...
   def add_package(self,pkg,export_dev_paths=False):
     if pkg.loaded:
-      print '--> Adding package {} version {} to {}'.format(pkg.name,pkg.version,pkg.modded_paths)
+      print('--> Adding package {} version {} to {}'.format(pkg.name,pkg.version,pkg.modded_paths))
     else:
-      print '==> Error! Package not loaded! Need to call pkg.read()!'
+      print('==> Error! Package not loaded! Need to call pkg.read()!')
       exit(1)
     for mod in pkg.path_mods:
       self.mod_path(mod)
       if export_dev_paths:
         if 'libraries' in mod.contains:
-          print '--> Appending library path {} to LDFLAGS'.format(mod.value)
+          print('--> Appending library path {} to LDFLAGS'.format(mod.value))
           self.lib_mods.append(PathMod(name='LDFLAGS',action='append',value='-L{}'.format(mod.value)))
         if 'headers' in mod.contains:
-          print '--> Appending header path {} to CPPFLAGS'.format(mod.value)
+          print('--> Appending header path {} to CPPFLAGS'.format(mod.value))
           self.inc_mods.append(PathMod(name='CPPFLAGS',action='append',value='-I{}'.format(mod.value)))
   def mod_path(self,mod,action=None,dev=False,sep=':'):
     if dev:
@@ -34,9 +35,9 @@ class Environment(object):
     paths[mod.name].modify(mod,action=action)
   def remove_package(self,pkg):
     if pkg.loaded:
-      print '--> Removing package {} version {} from {}'.format(pkg.name,pkg.version,pkg.modded_paths)
+      print('--> Removing package {} version {} from {}'.format(pkg.name,pkg.version,pkg.modded_paths))
     else:
-      print '==> Error! Package not loaded! Need to call pkg.read()!'
+      print('==> Error! Package not loaded! Need to call pkg.read()!')
       exit(1)
     for mod in pkg.path_mods:
       if mod.name not in self.paths:

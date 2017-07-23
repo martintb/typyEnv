@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 class PathMod(object):
   def __init__(self,*args,**kwargs):
     self.contains = kwargs.get('contains',list())
@@ -7,9 +9,9 @@ class PathMod(object):
       self.action = kwargs['action']
       self.value  = kwargs['value'].replace(' ','_') #for sanitizing malicious commands in the paths
     else:
-      print '==> Error! Can\'t build PathMod with given args:'
+      print('==> Error! Can\'t build PathMod with given args:')
       for k,v in kwargs.items():
-        print '{}: {}',format(k,v)
+        print('{}: {}',format(k,v))
       exit(1)
   def __str__(self):
     return '<PathMod name:{} action:{} value:{}>'.format(self.name,self.action,self.value)
