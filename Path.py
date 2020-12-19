@@ -32,6 +32,9 @@ class Path(object):
     path_list = list(self.path_set)
     path_list.insert(0,path)
     self.path_set = OrderedSet(path_list)
+  def set(self,path):
+    path_list = [path]
+    self.path_set = OrderedSet(path_list)
   def remove(self,path):
     try:
       self.path_set.remove(path)
