@@ -26,7 +26,11 @@ try:
 except KeyError:
   print('==> Error! TYPYENV_LOADED_PKGS not set!')
   exit(1)
-loaded_pkgs = loaded_pkgs.split(':')
+
+if loaded_pkgs:
+    loaded_pkgs = loaded_pkgs.strip().split(':')
+else:
+    loaded_pkgs = []
 
 if not args.json:
   try:
@@ -71,6 +75,7 @@ while not allDone:
   except IndexError:
     pkgVersion = None
   pkg = Package(json,pkgName)
+  print("J,pN,pV",json,pkgName,pkgVersion)
   pkg.read(pkgVersion)
   pkgList.append(pkg)
   depList.extend(pkg.dependencies)
