@@ -75,7 +75,6 @@ while not allDone:
   except IndexError:
     pkgVersion = None
   pkg = Package(json,pkgName)
-  print("J,pN,pV",json,pkgName,pkgVersion)
   pkg.read(pkgVersion)
   pkgList.append(pkg)
   depList.extend(pkg.dependencies)
