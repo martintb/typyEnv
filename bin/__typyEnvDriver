@@ -13,6 +13,7 @@ parser.add_argument('--json',type=str,default='')
 parser.add_argument('--dev',action='store_true')
 
 group = parser.add_mutually_exclusive_group(required=True)
+group.add_argument('--swap',action='store_true')
 group.add_argument('--add',action='store_true')
 group.add_argument('--remove',action='store_true')
 group.add_argument('--reset',action='store_true')
@@ -20,22 +21,16 @@ group.add_argument('--list',action='store_true')
 
 args = parser.parse_args()
 
-if args.list:
-  try:
-    loaded_pkgs = os.environ['TYPYENV_LOADED_PKGS']
-  except KeyError:
-    print('==> Error! TYPYENV_LOADED_PKGS not set!')
-    exit(1)
-  print('{:15s} {:15s}'.format('PACKAGE','VERSION'))
-  print('{:15s} {:15s}'.format('=======','======='))
-  if loaded_pkgs:
-    for pkg in loaded_pkgs.split(':'):
-      pkgSPec = pkg.split('/')
-      print('{:15s} {:15s}'.format(*(pkg.split('/'))))
-  else:
-    print('No loaded packages!')
+try:
+  loaded_pkgs = os.environ['TYPYENV_LOADED_PKGS']
+except KeyError:
+  print('==> Error! TYPYENV_LOADED_PKGS not set!')
   exit(1)
 
+if loaded_pkgs:
+    loaded_pkgs = loaded_pkgs.strip().split(':')
+else:
+    loaded_pkgs = []
 
 if not args.json:
   try:
@@ -47,15 +42,22 @@ if not args.json:
 else:
   json = args.json
 
+if args.list:
+  print('{:15s} {:15s}'.format('PACKAGE','VERSION'))
+  print('{:15s} {:15s}'.format('=======','======='))
+  if loaded_pkgs:
+    for pkg in loaded_pkgs:
+      pkgSPec = pkg.split('/')
+      print('{:15s} {:15s}'.format(*(pkg.split('/'))))
+  else:
+    print('No loaded packages!')
+  exit(1)
+
+
 depList = []
 if args.reset:
-  try:
-    loaded_pkgs = os.environ['TYPYENV_LOADED_PKGS']
-  except KeyError:
-    print('==> Error! TYPYENV_LOADED_PKGS not set!')
-    exit(1)
   if loaded_pkgs:
-    depList.extend(loaded_pkgs.split(':'))
+    depList.extend(loaded_pkgs)
   else:
     print('--> No loaded packages!')
     exit(0)
@@ -81,14 +83,25 @@ while not allDone:
 
 env = Environment()
 for pkg in reversed(pkgList):
-  if args.add:
+  if args.swap:
+    for loadedPkgSpec in loaded_pkgs:
+        loadedPkgName,loadedPkgVersion = loadedPkgSpec.split("/")
+        if loadedPkgName == pkg.pkg_name:
+            loadedPkg = Package(json,loadedPkgName)
+            loadedPkg.read(loadedPkgVersion)
+            env.remove_package(loadedPkg)
+            mod = PathMod(name='TYPYENV_LOADED_PKGS',action='remove',value=loadedPkgSpec)
+            env.mod_path(mod)
+    action = 'append'
+    env.add_package(pkg,export_dev_paths=args.dev)
+  elif args.add:
     action = 'append'
     env.add_package(pkg,export_dev_paths=args.dev)
   elif args.remove:
     action = 'remove'
     env.remove_package(pkg)
-  pkgName = pkg.pkg_name + '/' + pkg.version
-  mod = PathMod(name='TYPYENV_LOADED_PKGS',action=action,value=pkgName)
+  pkgSpec = pkg.pkg_name + '/' + pkg.version
+  mod = PathMod(name='TYPYENV_LOADED_PKGS',action=action,value=pkgSpec)
   env.mod_path(mod)
 
 dev_str,variables_str,export_str = env.export(export_dev_paths=args.dev)

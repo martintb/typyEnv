@@ -14,6 +14,8 @@ class Package(object):
                             'include':  {'dir':'include'  ,'name':'CPATH',            'contains':['headers']},
                             'lib':      {'dir':'lib'      ,'name':'LIBRARY_PATH',     'contains':['ldlibraries']},
                             'ldlib':    {'dir':'lib'      ,'name':'LD_LIBRARY_PATH',  'contains':['libraries']},
+                            'lib64':    {'dir':'lib64'    ,'name':'LIBRARY_PATH',     'contains':['ldlibraries']},
+                            'ldlib64':  {'dir':'lib64'    ,'name':'LD_LIBRARY_PATH',  'contains':['libraries']},
                             'python':   {'dir':'pylib'    ,'name':'PYTHONPATH'},
                           }
     self.action='prepend'
