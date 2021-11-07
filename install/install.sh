@@ -1,7 +1,7 @@
 #!/bin/bash
 
-swString='export SW_BASE=/home/tbm/software'
-envString='export TYPYENV_BASE=$SW_BASE/typyEnv/v0'
+swString='export SW_BASE=/Users/tbm/software'
+envString='export TYPYENV_BASE=$SW_BASE/typyEnv/git'
 
 
 echo '--> Creating shell initialization file (~/.typyEnv)'

@@ -3,7 +3,7 @@
 #sudo -u $USER bash -l tybuild
 
 
-SW_BASE=/home/martintb/tyware
+SW_BASE=/Users/tbm/software
 PKG=python
 VERSION=2.7.10
 PREFIX=$SW_BASE/$PKG/$VERSION
