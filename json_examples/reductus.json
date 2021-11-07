@@ -1,0 +1,13 @@
+{
+  "info": {
+    "name": "reductus",
+    "description": "reductus",
+    "pkg_prefix":"/Users/tbm/software/reductus"
+  },
+  "defaults": {
+    "version":"git-10mSANS",
+    "std_paths":["bin","lib","ldlib","python"],
+    "action":"prepend"
+  },
+  "versions": { "git-master": {},  "git-10mSANS": {} }
+}

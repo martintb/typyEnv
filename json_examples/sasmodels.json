@@ -1,0 +1,13 @@
+{
+  "info": {
+    "name": "sasmodels",
+    "description": "sasmodels",
+    "pkg_prefix":"/Users/tbm/software/sasmodels"
+  },
+  "defaults": {
+    "version":"git",
+    "std_paths":["bin","lib","ldlib","python"],
+    "action":"prepend"
+  },
+  "versions": { "git": {}, "pkienzle-git":{} }
+}

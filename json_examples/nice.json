@@ -1,8 +1,8 @@
 {
   "info": {
-    "name": "pyPRISM",
-    "description": "pyPRISM",
-    "pkg_prefix":"/Users/tbm/software/pyPRISM"
+    "name": "nice",
+    "description": "nice",
+    "pkg_prefix":"/Users/tbm/software/nice"
   },
   "defaults": {
     "version":"git",

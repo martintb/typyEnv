@@ -1,0 +1,13 @@
+{
+  "info": {
+    "name": "mcstas",
+    "description": "mcstas",
+    "pkg_prefix":"/Users/tbm/software/mcstas"
+  },
+  "defaults": {
+    "version":"2.5",
+    "std_paths":["bin","lib","ldlib","python"],
+    "action":"prepend"
+  },
+  "versions": { "2.5": {} }
+}
